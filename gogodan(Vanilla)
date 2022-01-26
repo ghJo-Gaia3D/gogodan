@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+
+    <script>
+        window.onload = function() {
+            let setting = "";
+
+            setting += "<option>" + "숫자를 선택해주세요" + "</option>";
+
+            for( let s = 1;s <= 9; s++) {
+            setting += "<option value=" + s + " >" + s + "</option>";
+            }
+
+            document.getElementById("frontNumber").innerHTML = setting;
+            document.getElementById("backNumber").innerHTML = setting;
+        }
+
+        function play() {
+            const front = document.getElementById("frontNumber").value;
+            const back = document.getElementById("backNumber").value;
+
+            let table = "";
+
+            table += "<table border>";
+                for(let i = 1; i<=front; i++) {
+            table += "<th>" + i + "단" + "</th>";    
+                }
+
+            table += "<tr>";
+                for(let j = 1; j <= back; j++) {
+                    for(let i = 1; i<=front; i++) {
+            table += "<td>" + i + "*" + j + "=" + i * j + "</td>";    
+                    }
+            table += "</tr>";
+            }
+
+            table += "</table>"
+
+            document.getElementById("result").innerHTML = table;
+        }
+    </script>
+
+</head> 
+<body>
+
+    <select id="frontNumber"></select>
+    <select id="backNumber" ></select> 
+
+    <input type="button" value="실행" onclick="play()"/>
+
+    <div id="result"></div>
+    
+</body>
+</html>
