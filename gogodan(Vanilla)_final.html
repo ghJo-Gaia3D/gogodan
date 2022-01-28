@@ -22,6 +22,7 @@
         }
 
         function makeResult() {
+            
 
             let front = document.getElementById("frontNumber").value;
             let back = document.getElementById("backNumber").value;
@@ -29,6 +30,8 @@
            
             let makeTable = document.createElement("table");
             makeTable.setAttribute("border", 1);
+
+            removeTable("table");
 
             for(let i = 1; i<=front; i++) {
                 let makeTh = document.createElement("th");
@@ -48,15 +51,17 @@
                 }
             }
             result.appendChild(makeTable);
-            document.body.appendChild(result);
+            
         }
 
 
         function removeTable(node) {
             
+                let main = document.getElementById("main");
                 let delTable = document.getElementById("result");
+
                 
-                document.body.removeChild(delTable);
+                node.removeChild(delTable);
             
         }
 
@@ -68,6 +73,8 @@
     <select id="backNumber"></select>
     <input type="button" value="만들기" onclick="makeResult()" />
     <input type="button" value="삭제" onclick="removeTable()" />
-    <div id="result"></div>
+    <div id="main">
+        <div id="result"></div>
+    </div>
 </body>
 </html>
