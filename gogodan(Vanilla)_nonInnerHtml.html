@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+    <script>
+       window.onload = function() {
+			let frontNum = document.getElementById("frontNumber");
+			let backNum = document.getElementById("backNumber");
+			createOptions(frontNum, 9);
+			createOptions(backNum, 9);
+		}
+		
+		// 옵션 element생성
+		function createOptions(node, count) {
+			for(let i = 0; i < count; i++) {
+				let value = i + 1;
+				let newOption = document.createElement("option");
+				newOption.setAttribute("value", value);
+				newOption.text = value;
+				node.appendChild(newOption);
+			}
+		}
+		
+		// 테이블을 추가하는 기능
+		function createTable() {
+			removeChildren();
+		
+			let frontValue = document.getElementById("frontNumber");
+			let backValue = document.getElementById("backNumber");
+			let result = document.getElementById("result");
+			
+			let newTable = document.createElement("table");
+			let newThead = document.createElement("thead");
+			let newTbody = document.createElement("tbody");
+			
+			/* TODO 아래링크를 참고하여 작성 */
+			// https://www.w3.org/TR/2021/SPSD-DOM-Level-3-Core-20210928/core.html#ID-745549614
+			
+			newTable.appendChild(newThead);
+			newTable.appendChild(newTbody);
+			result.appendChild(newTable);
+		}
+		
+		// 자식노드를 모두 삭제하는 기능
+		function removeChildren(node) {
+			let children = node.childNodes;
+			
+			/* TODO 자식노드를 모두 지우는 기능 작성 */
+			//node.removeChild();
+		}
+    </script>
+
+</head> 
+<body>
+    <select id="frontNumber"></select>
+    <select id="backNumber" ></select> 
+    <input type="button" value="실행" onclick="createTable()"/>
+    <div id="result"></div>
+</body>
+</html>
