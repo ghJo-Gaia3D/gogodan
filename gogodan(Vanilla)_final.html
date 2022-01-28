@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+    <script>
+        window.onload = function() {
+            let frontNum = document.getElementById("frontNumber");
+            let backNum = document.getElementById("backNumber"); 
+            setNumber(frontNum);
+            setNumber(backNum);
+        }    
+
+        function setNumber(node) {
+            for(let s = 0; s < 9; s++) {
+                let value = s + 1;
+                let newOption = document.createElement("option");
+                newOption.setAttribute("value", value);
+                newOption.text = value;
+                node.appendChild(newOption);
+            }
+        }
+
+        function makeResult() {
+
+            let front = document.getElementById("frontNumber").value;
+            let back = document.getElementById("backNumber").value;
+            let result = document.getElementById("result");
+           
+            let makeTable = document.createElement("table");
+            makeTable.setAttribute("border", 1);
+
+            for(let i = 1; i<=front; i++) {
+                let makeTh = document.createElement("th");
+                let thText = document.createTextNode(i + "단");
+                makeTh.appendChild(thText);   
+                makeTable.appendChild(makeTh);
+            }
+            
+            for(let j = 1; j <= back; j++) {
+                let makeTr = document.createElement("tr");
+                makeTable.appendChild(makeTr)
+                for(let i = 1; i<=front; i++) {
+                    let makeTd = document.createElement("td");
+                    let tdText = document.createTextNode( i + "*" + j + "=" + i * j);
+                    makeTd.appendChild(tdText);
+                    makeTable.appendChild(makeTd);
+                }
+            }
+            result.appendChild(makeTable);
+            document.body.appendChild(result);
+        }
+
+
+        function removeTable(node) {
+            
+                let delTable = document.getElementById("result");
+                
+                document.body.removeChild(delTable);
+            
+        }
+
+    </script>
+
+</head>
+<body>
+    <select id="frontNumber"></select>
+    <select id="backNumber"></select>
+    <input type="button" value="만들기" onclick="makeResult()" />
+    <input type="button" value="삭제" onclick="removeTable()" />
+    <div id="result"></div>
+</body>
+</html>
