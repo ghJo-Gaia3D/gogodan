@@ -41,12 +41,12 @@
                         let makeTd = document.createElement('td');
 
                         let secSelect = document.createElement('select');
-                        secSelect.setAttribute('id', "result");
+                        secSelect.setAttribute('id', "selectResult");
 
                         for(let k = 1; k <= second; k++) {
                             let secOption = document.createElement('option');
                             secOption.setAttribute('value', k);
-                            secOption.text = 1 + " , " + 1;
+                            secOption.text = k +" , " + k;
 
                             secSelect.appendChild(secOption);
                         }
@@ -65,7 +65,7 @@
             }
 
             function updateTable() {
-                
+
             }
 
         </script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>콤보박스_제이쿼리</title>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $(#second).change(makeBox);
+           
+        });
+
+        function setNumber(node) {
+            for(let s = 0; s < 5; s++) {
+                let value = s + 1;
+                let newOption = document.createElement('option');
+                newOption.setAttribute('value', value);
+                newOption.text = value;
+                node.appendChild(newOption);
+            }
+        }
+
+        function makeBox() {
+
+        }
+    </script>
+
+</head> 
+<body>
+
+    <select id="first"></select>
+    <span>X</span>
+    <select id="second"></select>
+
+    <div id="result"></div>
+
+</body>
+</html>
