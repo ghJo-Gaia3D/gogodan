@@ -7,6 +7,8 @@
         window.onload = function() {
             let frontNum = document.getElementById("frontNumber");
             let backNum = document.getElementById("backNumber"); 
+            backNum.addEventListener("change", makeResult);
+
             setNumber(frontNum);
             setNumber(backNum);
         }    
@@ -23,15 +25,14 @@
 
         function makeResult() {
             
-
             let front = document.getElementById("frontNumber").value;
             let back = document.getElementById("backNumber").value;
             let result = document.getElementById("result");
-           
+
+            // delBox();
+
             let makeTable = document.createElement("table");
             makeTable.setAttribute("border", 1);
-
-            removeTable("table");
 
             for(let i = 1; i<=front; i++) {
                 let makeTh = document.createElement("th");
@@ -51,30 +52,23 @@
                 }
             }
             result.appendChild(makeTable);
-            
         }
 
+        // function delBox() {
+        //     let result = document.getElementById('result');
+        //     result.removeChild(result.childNodes[0]);
+        // }
 
-        function removeTable(node) {
-            
-                let main = document.getElementById("main");
-                let delTable = document.getElementById("result");
-
-                
-                node.removeChild(delTable);
-            
-        }
 
     </script>
 
 </head>
 <body>
     <select id="frontNumber"></select>
+    <span>X</span>
     <select id="backNumber"></select>
-    <input type="button" value="만들기" onclick="makeResult()" />
-    <input type="button" value="삭제" onclick="removeTable()" />
-    <div id="main">
-        <div id="result"></div>
-    </div>
+
+    <div id="result"></div>
+
 </body>
 </html>

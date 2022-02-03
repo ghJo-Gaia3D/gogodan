@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>콤보박스 이벤트</title>
+        <script>
+            window.onload = function() {
+                let first = document.getElementById('first');
+                let second = document.getElementById('second');
+                second.addEventListener("change", makeBox);
+
+                setNumber(first);
+                setNumber(second);
+
+            }
+
+            function setNumber(node) {
+                for(let s = 0; s < 5; s++) {
+                    let value = s + 1;
+                    let newOption = document.createElement('option');
+                    newOption.setAttribute('value', value);
+                    newOption.text = value;
+                    node.appendChild(newOption);
+                }
+            }
+
+            function makeBox() {
+
+                let first = document.getElementById('first').value;
+                let second = document.getElementById('second').value;
+                let result = document.getElementById('result');
+
+                delBox();
+
+                let makeTable = document.createElement('table');
+                makeTable.setAttribute('border', 1); 
+
+                for(let j = 1; j <= first; j++) {
+                    let makeTr = document.createElement('tr');
+                    makeTable.appendChild(makeTr);
+                    for(let i =1; i <= second; i++) {
+                        let makeTd = document.createElement('td');
+
+                        let secSelect = document.createElement('select');
+                        secSelect.setAttribute('id', "result");
+
+                        for(let k = 1; k <= second; k++) {
+                            let secOption = document.createElement('option');
+                            secOption.setAttribute('value', k);
+                            secOption.text = k;
+
+                            secSelect.appendChild(secOption);
+                        }
+                        
+                        makeTd.appendChild(secSelect);
+
+                        makeTable.appendChild(makeTd);
+                    }
+                }
+                result.appendChild(makeTable);
+            }
+
+            function delBox() {
+                let result = document.getElementById('result');
+                result.removeChild(result.childNodes[0]);
+            }
+
+        </script>
+    </head>
+    <body>
+        <select id="first"></select>
+        <span>X</span>
+        <select id="second"></select>
+
+        <div id="result"></div>
+    </body>
+</html>
