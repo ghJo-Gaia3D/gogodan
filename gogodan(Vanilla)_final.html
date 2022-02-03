@@ -29,7 +29,7 @@
             let back = document.getElementById("backNumber").value;
             let result = document.getElementById("result");
 
-            // delBox();
+            delBox();
 
             let makeTable = document.createElement("table");
             makeTable.setAttribute("border", 1);
@@ -51,13 +51,16 @@
                     makeTable.appendChild(makeTd);
                 }
             }
+            
             result.appendChild(makeTable);
         }
 
-        // function delBox() {
-        //     let result = document.getElementById('result');
-        //     result.removeChild(result.childNodes[0]);
-        // }
+        function delBox() {
+            let delResult = document.getElementById('result');
+            while (delResult.hasChildNodes()) {
+                delResult.removeChild(delResult.firstChild);
+            }
+        }
 
 
     </script>

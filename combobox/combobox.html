@@ -7,7 +7,7 @@
             window.onload = function() {
                 let first = document.getElementById('first');
                 let second = document.getElementById('second');
-                second.addEventListener("change", makeBox);
+                second.addEventListener('change', makeBox);
 
                 setNumber(first);
                 setNumber(second);
@@ -61,9 +61,13 @@
             }
 
             function delBox() {
-                let result = document.getElementById('result');
-                result.removeChild(result.childNodes[0]);
+                let delResult = document.getElementById('result');
+                while (delResult.hasChildNodes()) {
+                    delResult.removeChild(delResult.firstChild);
+                }
             }
+
+            
 
         </script>
     </head>
