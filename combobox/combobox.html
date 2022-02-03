@@ -11,7 +11,6 @@
 
                 setNumber(first);
                 setNumber(second);
-
             }
 
             function setNumber(node) {
@@ -25,20 +24,20 @@
             }
 
             function makeBox() {
+                delBox();
 
                 let first = document.getElementById('first').value;
                 let second = document.getElementById('second').value;
                 let result = document.getElementById('result');
 
-                delBox();
-
                 let makeTable = document.createElement('table');
                 makeTable.setAttribute('border', 1); 
 
-                for(let j = 1; j <= first; j++) {
+                for(let j = 1; j <= second; j++) {
                     let makeTr = document.createElement('tr');
                     makeTable.appendChild(makeTr);
-                    for(let i =1; i <= second; i++) {
+                    
+                    for(let i =1; i <= first; i++) {
                         let makeTd = document.createElement('td');
 
                         let secSelect = document.createElement('select');
@@ -47,13 +46,11 @@
                         for(let k = 1; k <= second; k++) {
                             let secOption = document.createElement('option');
                             secOption.setAttribute('value', k);
-                            secOption.text = k;
+                            secOption.text = 1 + " , " + 1;
 
                             secSelect.appendChild(secOption);
                         }
-                        
                         makeTd.appendChild(secSelect);
-
                         makeTable.appendChild(makeTd);
                     }
                 }
@@ -67,7 +64,9 @@
                 }
             }
 
-            
+            function updateTable() {
+                
+            }
 
         </script>
     </head>
