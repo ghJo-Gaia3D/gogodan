@@ -24,12 +24,11 @@
         }
 
         function makeResult() {
-            
+            delBox();
+
             let front = document.getElementById("frontNumber").value;
             let back = document.getElementById("backNumber").value;
             let result = document.getElementById("result");
-
-            delBox();
 
             let makeTable = document.createElement("table");
             makeTable.setAttribute("border", 1);
@@ -46,12 +45,11 @@
                 makeTable.appendChild(makeTr)
                 for(let i = 1; i<=front; i++) {
                     let makeTd = document.createElement("td");
-                    let tdText = document.createTextNode( i + "*" + j + "=" + i * j);
+                    let tdText = document.createTextNode( i + " X " + j + " = " + i * j);
                     makeTd.appendChild(tdText);
                     makeTable.appendChild(makeTd);
                 }
             }
-            
             result.appendChild(makeTable);
         }
 
@@ -62,9 +60,7 @@
             }
         }
 
-
     </script>
-
 </head>
 <body>
     <select id="frontNumber"></select>
