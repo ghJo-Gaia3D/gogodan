@@ -15,6 +15,7 @@
         function setNumber(node) {
             for(let s = 0; s < 5; s++) {
                 let value = s + 1;
+                $()
                 let newOption = document.createElement('option');
                 newOption.setAttribute('value', value);
                 newOption.text = value;
@@ -23,7 +24,44 @@
         }
 
         function makeBox() {
+            delBox();
 
+            let first = $('#first').val
+            let second = $('#second').val
+            let result = $('#result')
+
+            let makeTable = document.createElement('table');
+            makeTable.setAttribute('border', 1); 
+
+            for(let j = 1; j <= second; j++) {
+                let makeTr = document.createElement('tr');
+                makeTable.appendChild(makeTr);
+                
+                for(let i =1; i <= first; i++) {
+                    let makeTd = document.createElement('td');
+
+                    let secSelect = document.createElement('select');
+                    secSelect.setAttribute('id', "selectResult");
+
+                    for(let k = 1; k <= second; k++) {
+                        let secOption = document.createElement('option');
+                        secOption.setAttribute('value', k);
+                        secOption.text = k +" , " + k;
+
+                        secSelect.appendChild(secOption);
+                    }
+                    makeTd.appendChild(secSelect);
+                    makeTable.appendChild(makeTd);
+                }
+            }
+            result.appendChild(makeTable);
+        }
+
+        function delBox() {
+            let delResult = $(#result);
+            while (delResult.hasChildNodes()) {
+                delResult.removeChild(delResult.firestChild);
+            }
         }
     </script>
 
