@@ -12,7 +12,20 @@
                 setNumber(first);
                 setNumber(second);
             }
-
+			
+			// select박스 change 함수
+			function changeSelect(event){
+				console.log(event)
+				let target = event.target;
+				console.log(target);
+				let value = target.value;
+				console.log(target.value);
+				let td = target.parentElement;
+				let tr = td.parentElement;
+				let siblings = tr.querySelectorAll('td > select');
+				console.log(siblings);
+			}
+			
             function setNumber(node) {
                 for(let s = 0; s < 5; s++) {
                     let value = s + 1;
@@ -35,7 +48,7 @@
 
                 for(let j = 1; j <= second; j++) {
                     let makeTr = document.createElement('tr');
-                    makeTable.appendChild(makeTr);
+                    
                     
                     for(let i =1; i <= first; i++) {
                         let makeTd = document.createElement('td');
@@ -47,12 +60,16 @@
                             let secOption = document.createElement('option');
                             secOption.setAttribute('value', k);
                             secOption.text = k +" , " + k;
-
+							
+							// 이벤트 핸들링
+							secSelect.addEventListener('change', changeSelect);
+							
                             secSelect.appendChild(secOption);
                         }
                         makeTd.appendChild(secSelect);
-                        makeTable.appendChild(makeTd);
+                        makeTr.appendChild(makeTd);
                     }
+					makeTable.appendChild(makeTr);
                 }
                 result.appendChild(makeTable);
             }
