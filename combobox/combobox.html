@@ -18,14 +18,24 @@
 				console.log(event)
 				let target = event.target;
 				console.log(target);
-				let value = target.value;
-				console.log(target.value);
-				let td = target.parentElement;
-				let tr = td.parentElement;
-				let siblings = tr.querySelectorAll('td > select');
+                let value = target.value;
+                console.log(value);
+                let td = target.parentElement;
+                console.log(td);
+                let tr = td.parentElement;
+                console.log(tr);
+                let siblings = tr.querySelectorAll('td > select');
 				console.log(siblings);
+
+                for(let i = 0; i < siblings.length; i++) {
+                    siblings[i].value = value
+
+                }
+                
+                
+
 			}
-			
+
             function setNumber(node) {
                 for(let s = 0; s < 5; s++) {
                     let value = s + 1;
@@ -46,24 +56,42 @@
                 let makeTable = document.createElement('table');
                 makeTable.setAttribute('border', 1); 
 
-                for(let j = 1; j <= second; j++) {
-                    let makeTr = document.createElement('tr');
-                    
-                    
-                    for(let i =1; i <= first; i++) {
+                for(let j = 1; j <= second; j++) {  // 뒷번호, 행 갯수
+                    let makeTr = document.createElement('tr');  
+                    makeTr.setAttribute('id', `trNum${j}`);
+                    makeTr.setAttribute('value', j);
+                                      
+                    for(let i =1; i <= first; i++) {  // 앞번호, 열 갯수
                         let makeTd = document.createElement('td');
-
+                        makeTd.setAttribute('id', `tdNum${i}`);
+                        makeTd.setAttribute('value', i);
+                        
                         let secSelect = document.createElement('select');
-                        secSelect.setAttribute('id', "selectResult");
-
-                        for(let k = 1; k <= second; k++) {
+                        secSelect.setAttribute('id', `selectResult${i}`);
+                        
+                        for(let k = 1; k <= second; k++) {  // 테이블 내용 값
                             let secOption = document.createElement('option');
                             secOption.setAttribute('value', k);
-                            secOption.text = k +" , " + k;
-							
-							// 이벤트 핸들링
-							secSelect.addEventListener('change', changeSelect);
-							
+
+                            // secOption.text = k;
+                            for(let l= 1; l <=5; l++) {
+                                if(i=="1") {
+                                    secOption.text = k;
+                                } else if(i=="2") {
+                                    secOption.text = k + " , " + k;
+                                } else if(i=="3") {
+                                    secOption.text = k + " , " + k + " , " + k;
+                                } else if(i=="4") {
+                                    secOption.text = k + " , " + k + " , " + k + " , " + k;
+                                } else if(i=="5") {
+                                    secOption.text = k + " , " + k + " , " + k + " , " + k + " , " + k;
+                                }
+                            }
+
+                        
+                            //이벤트 핸들링
+                            secSelect.addEventListener('change', changeSelect);
+
                             secSelect.appendChild(secOption);
                         }
                         makeTd.appendChild(secSelect);
