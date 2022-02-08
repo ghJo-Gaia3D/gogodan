@@ -27,13 +27,23 @@
                 let siblings = tr.querySelectorAll('td > select');
 				console.log(siblings);
 
-                for(let i = 0; i < siblings.length; i++) {
-                    siblings[i].value = value
+                let table = tr.parentElement;
+                console.log(table);
 
+
+                let tdVal = document.getElementById('trNum')
+                console.log(tdVal);
+
+                for(let i = value -1; i < siblings.length; i++) {
+                    
+
+                    siblings[i].value = value
+                    console.log(siblings[i].value)
+                
                 }
                 
-                
 
+                
 			}
 
             function setNumber(node) {
@@ -58,40 +68,40 @@
 
                 for(let j = 1; j <= second; j++) {  // 뒷번호, 행 갯수
                     let makeTr = document.createElement('tr');  
-                    makeTr.setAttribute('id', `trNum${j}`);
+                    makeTr.setAttribute('id', `trNum`);
                     makeTr.setAttribute('value', j);
                                       
                     for(let i =1; i <= first; i++) {  // 앞번호, 열 갯수
                         let makeTd = document.createElement('td');
-                        makeTd.setAttribute('id', `tdNum${i}`);
+                        makeTd.setAttribute('id', "tdNum");
                         makeTd.setAttribute('value', i);
                         
                         let secSelect = document.createElement('select');
-                        secSelect.setAttribute('id', `selectResult${i}`);
+                        secSelect.setAttribute('id', "selectResult");
                         
-                        for(let k = 1; k <= second; k++) {  // 테이블 내용 값
+                
+
+                        for(let c = 1; c <= 5; c++) {  // 테이블 내용 값
                             let secOption = document.createElement('option');
-                            secOption.setAttribute('value', k);
+                            secOption.setAttribute('value', c);
 
-                            // secOption.text = k;
-                            for(let l= 1; l <=5; l++) {
-                                if(i=="1") {
-                                    secOption.text = k;
-                                } else if(i=="2") {
-                                    secOption.text = k + " , " + k;
-                                } else if(i=="3") {
-                                    secOption.text = k + " , " + k + " , " + k;
-                                } else if(i=="4") {
-                                    secOption.text = k + " , " + k + " , " + k + " , " + k;
-                                } else if(i=="5") {
-                                    secOption.text = k + " , " + k + " , " + k + " , " + k + " , " + k;
-                                }
+                           
+                            
+                            if(i=="1") {
+                                secOption.text = c;
+                            } else if(i=="2") {
+                                secOption.text = c + " , " + c;
+                            } else if(i=="3") {
+                                secOption.text = c + " , " + c + " , " + c;
+                            } else if(i=="4") {
+                                secOption.text = c + " , " + c + " , " + c + " , " + c;
+                            } else if(i=="5") {
+                                secOption.text = c + " , " + c + " , " + c + " , " + c + " , " + c;
                             }
-
-                        
+                            
                             //이벤트 핸들링
                             secSelect.addEventListener('change', changeSelect);
-
+                           
                             secSelect.appendChild(secOption);
                         }
                         makeTd.appendChild(secSelect);
@@ -107,10 +117,6 @@
                 while (delResult.hasChildNodes()) {
                     delResult.removeChild(delResult.firstChild);
                 }
-            }
-
-            function updateTable() {
-
             }
 
         </script>

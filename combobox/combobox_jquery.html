@@ -8,23 +8,28 @@
     <script>
 
         $(document).ready(function() {
-            $(#second).change(makeBox);
-           
+
+            $("#second").change(makeBox);
+
+     
+            
         });
 
         function setNumber(node) {
             for(let s = 0; s < 5; s++) {
                 let value = s + 1;
-                $()
-                let newOption = document.createElement('option');
-                newOption.setAttribute('value', value);
-                newOption.text = value;
-                node.appendChild(newOption);
+                $(node).append(createElement('option',{
+                    attr: {
+                        'value' : value,
+                        'text' : value
+                    }
+                }))
+                
             }
         }
 
         function makeBox() {
-            delBox();
+            // delBox();
 
             let first = $('#first').val
             let second = $('#second').val
@@ -57,12 +62,12 @@
             result.appendChild(makeTable);
         }
 
-        function delBox() {
-            let delResult = $(#result);
-            while (delResult.hasChildNodes()) {
-                delResult.removeChild(delResult.firestChild);
-            }
-        }
+        // function delBox() {
+        //     let delResult = $(#result);
+        //     while (delResult.hasChildNodes()) {
+        //         delResult.removeChild(delResult.firestChild);
+        //     }
+        // }
     </script>
 
 </head> 
