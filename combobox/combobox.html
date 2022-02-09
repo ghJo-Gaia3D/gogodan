@@ -27,20 +27,22 @@
                 let siblings = tr.querySelectorAll('td > select');
 				console.log(siblings);
 
-                let table = tr.parentElement;
-                console.log(table);
+                // let table = tr.parentElement;
+                // console.log(table);
 
 
-                let tdVal = document.getElementById('trNum')
-                console.log(tdVal);
-
-                for(let i = value -1; i < siblings.length; i++) {
+                // let tdVal = document.getElementById('trNum')
+                // console.log(tdVal);
+                while (siblings.value >= value) {
+                    siblings.text = value
+                }
+                // for(let i = ; i < siblings.length; i++) {
                     
 
-                    siblings[i].value = value
-                    console.log(siblings[i].value)
+                //     siblings[i].value = value
+                //     console.log(siblings[i].value)
                 
-                }
+                // }
                 
 
                 
@@ -114,8 +116,8 @@
 
             function delBox() {
                 let delResult = document.getElementById('result');
-                while (delResult.hasChildNodes()) {
-                    delResult.removeChild(delResult.firstChild);
+                if (delResult.hasChildNodes()) {
+                    delResult.removeChild(delResult.lastChild);
                 }
             }
 
